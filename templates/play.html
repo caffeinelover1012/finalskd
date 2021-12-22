@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SKD</title>
+  <link rel="stylesheet" href="{{url_for('static',filename = 'styles.css')}}">
+  <link rel="icon" href="{{url_for('static',filename = 'favicon.ico')}}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300" rel="stylesheet">
+  <script src="{{ url_for('static',filename = 'script.js') }}"></script>
+</head>
+<body onload="fun_onload()">
+  <div class="outbox">
+  </div>
+  {%if not o_name %}
+  <div class="welcome">Welcome!</div>
+  {%else%}
+  <div class="welcome" id="nowplaying"> Got it! Now Playing: <br> {{ o_name }}</div>
+  {%endif%}
+  <div class="maindiv">
+    <div class="content">
+      <div class="maintext">
+        <!-- <img  src="{{ url_for('static',filename = 'tobeused.gif') }}" alt="SKD."> -->
+        <h5 class="header">SKD.</h5>
+      </div>
+    </div>
+    <form action="#" onsubmit="showloading()" method="post" name="f1">
+      <div class="form__group field">
+        <input type="search" autocomplete="off" class="form__field" placeholder="Song Name" name="name" id='name'
+          required />
+        <label for="name" class="form__label">Song Name or Lyrics</label>
+      </div>
+    </form>
+    <h5 id="loading"></h5>
+    {% if request.method=="POST" %}
+    <br>
+    <h6> <a href="{{ path }}" id="songurl" download>{{ o_name }}</a></h6><audio id='songfile' autoplay controls loop>
+      <source type="audio/mpeg" src="{{ path }}">
+    </audio>
+    {% endif %}
+  </div>
+  </div>
+  <div class="footer">
+    <hr color="#9b9b9b" width="70%" style="max-width: 300px; margin-bottom: -2px;">
+    <p>© 2021 | made by Shubh Khandelwal |&nbsp;<a href="https://www.instagram.com/caffeinetocode"><img
+          src="{{ url_for('static', filename='insta.png') }}" height="30px" width="30px"
+          style="margin-top: -20px; vertical-align: bottom;  margin-bottom: -6px;"></a>&nbsp;&nbsp; <br> {{ count }}
+      plays so far</p>
+    <p style="margin-top: -15px; margin-bottom: 0;">By using this site, you agree to the <a
+        href="{{ url_for('root') }}"> terms and conditions</a>.
+    </p>
+  </div>
+  <!-- <svg>
+  <filter id = "fire">
+    <feTurbulence id="turbulence" baseFrequency = "0.1 0.1" numOctaves="2" seed="3">
+      <animate attributeName = "baseFrequency" dur = "15s" values = "0.1 0.1; 0.12 0.2" repeatCount = "indefinite"></animate>
+    </feTurbulence>
+    <feDisplacementMap in="SourceGraphic" scale = "7"></feDisplacementMap>
+  </filter>
+</svg>  -->
+</body>
+</html>

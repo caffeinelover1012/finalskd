@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello</title>
+    <link href="http://fonts.cdnfonts.com/css/sf-sports-night" rel="stylesheet">
+<style>
+    body{
+        background-color: #0047bb;
+    }
+    .maintext{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'SF Sports Night', sans-serif;
+  font-size: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 900;
+  filter: url(#fire);
+  color:#FFD700;
+  text-shadow: 0 0 10px #ff8c3b,
+                0 0 40px #ff8c3b,
+                0 0 80px #ff8c3b,
+                0 0 160px #ff8c3b,
+                0 0 240px #ff8c3b;
+  -webkit-text-stroke-width: 1px;
+ -webkit-text-stroke-color: #c45100;
+ text-decoration:underline solid #FFD700;
+}
+svg{
+  width: 0;
+  height: 0;
+}
+</style>
+</head>
+<body>
+    <div class="maintext">
+        <h1>SKD.</h1>
+    </div>
+<svg>
+  <filter id = "fire">
+    <feTurbulence id="turbulence" baseFrequency = "0.1 0.1" numOctaves="2" seed="3">
+      <animate attributeName = "baseFrequency" dur = "15s" values = "0.1 0.1; 0.12 0.2" repeatCount = "indefinite"></animate>
+    </feTurbulence>
+    <feDisplacementMap in="SourceGraphic" scale = "7"></feDisplacementMap>
+  </filter>
+</svg>
+</body>
+</html>
